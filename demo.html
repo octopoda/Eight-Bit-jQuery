@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+Eight Bit JS 
+ 
+ Written by Zack Davis (info@2721west.com)
+
+ Copyright (c) Zack Davis 2012, All Rights Reserved
+
+ Thanks to HTML5 Boilerplate, and Sharre http://sharrre.com/
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Eight Bit Jquery Plugin</title>
+<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="demo.css" />
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+</head>
+<body>
+
+<header>
+    <hgroup>
+        <h1>Eight-Bit.js Generator</h1>
+        <h2>A CSS/JQuery plugin to display eight bit sprites in pure CSS.</h2>
+    </hgroup>
+    
+    <a href="#" class="fork"><img src="/images/fork.png" alt="fork me on github" /></a>
+</header>
+<section class="main clearfix">
+    <article class="showoff clearfix">
+        <div class="zelda wrapper"></div>
+        <div class="megaman wrapper"></div>
+        <div class="mario wrapper"></div>
+        <div class="spaceInvader wrapper"></div>
+        <div class="linkWithHeart wrapper"></div>
+    </article>
+    <article>
+        <h1>How to Use</h1>
+        <p>Go to <a href="http://octopodamedia.com/eightbit/creator.html">the generator</a> and build your eight-bit sprite.  Remember the character name.  It is how you will be generating your sprite later.  Once your are finished with your grid. Click finished and copy the code.  Open you version of eight-bit.js and paste the code under the //Add your eigth bit objects here comment</p>
+
+        <pre>
+        //Add your Eight Bit Generator Code Here
+        </pre>
+
+        <p>Copy this code in to you &lt;head&gt; tag</p>
+        <pre>
+        &lt;script src="/path_to_file/jquery.eightbit.js" &gt;&lt;/script&gt; 
+        </pre>
+         
+        <p>In your &lt;body&gt; tag add this code and change out the character name for your and the pixel size for how big you would like your sprite.</p>    
+        <pre>
+        &lt;div class="link1"&gt;&lt;/div&gt;
+        &lt;script&gt;
+         $('.link').eightbit({
+            pixel :1,
+            character : 'your_character_name'  
+         });
+        &lt;/script&gt;
+        </pre>
+         
+        <h5><a href="http://octopodamedia.com/eightbit/creator.html">Go to the generator</a></h5>     
+        
+    </article>
+
+    <article>
+        <h1>Examples</h1>
+        <h5>Link at 1 pixel</h5>
+        <div class="link1 char"></div>
+        <pre>
+        &lt;div class="link1"&gt;&lt;/div&gt;
+        &lt;script&gt;
+         $('.link').eightbit({
+            pixel :1,
+            character : 'linkToThePast'  
+         });
+        &lt;/script&gt;
+        </pre>
+        
+
+        <h5>Link at 5 pixels</h5>
+        <div class="link5 char"></div>
+        <pre>
+        &lt;div class="link5"&gt;&lt;/div&gt;
+        &lt;script&gt;
+         $('.link5').eightbit({
+            pixel :5,
+            character : 'linkToThePast'  
+         });
+        &lt;/script&gt;
+        </pre>
+        
+        
+        <h5>Link at 10 pixel</h5>
+        <div class="link10 char"></div>
+        <pre>
+         &lt;div class="link10"&gt;&lt;/div&gt;
+         &lt;/script&gt;
+          $('.link10').eightbit({
+            pixel :10,
+            character : 'linkToThePast'  
+          });
+         &lt;/script&gt;
+        </pre>
+    </article>
+
+   
+</section>
+
+
+
+<footer>
+    <ul>
+        <li>Made By: Zack Davis - Octopoda<a href="http://octopodamedia.com" class="octopoda ir" target="_blank">Octopoda</a> </li>
+        <li></li>
+    </ul>
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="jquery.loaded.eightbit.js"></script>
+<script>
+$(function () {
+    
+
+    $('.mario').eightbit({
+        pixel :8,
+        character : 'mario'  
+     });
+
+    $('.megaman').eightbit({
+        pixel :5,
+        character : 'megaman'  
+     });
+
+    $('.zelda').eightbit({
+        pixel :4,
+        character : 'zeldaToThePast'  
+     }); 
+
+    $('.spaceInvader').eightbit({
+        pixel :8,
+        character : 'spaceInvader'  
+     });
+
+    $('.linkWithHeart').eightbit({
+        pixel :4,
+        character : 'linkWithHeart'  
+     })
+
+     $('.link1').eightbit({
+        pixel :1,
+        character : 'linkToThePast'  
+     });
+
+     $('.link5').eightbit({
+        pixel :5,
+        character : 'linkToThePast'  
+     });
+     $('.link10').eightbit({
+        pixel :10,
+        character : 'linkToThePast'  
+     });
+
+
+});
+</script>
+</body>
+</html>
