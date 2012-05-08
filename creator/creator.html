@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+Eight Bit JS Generator
+ 
+ Written by Zack Davis (info@2721west.com)
+
+ Copyright (c) Zack Davis 2012, All Rights Reserved
+
+ Please do not use without permission
+
+ Thanks to HTML5 Boilerplate, and Sharre http://sharrre.com/
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sprite Creator - Jquery Eight-Bit Plugin</title>
+<meta name="description" content="The easy generator for A Jquery Plugin to create pure CSS sprites using a generator" />
+<meta name="keywords" content="Eight-Bit, CSS Sprite, JQuery plug-in, Octopoda, Zack Davis, Zelda CSS sprite" />
+<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="creator.css" />
+<link type="text/css" rel="stylesheet" href="../jquery-minicolors/jquery.miniColors.css" />
+
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+</head>
+<body>
+
+<header class="clearfix">
+    <hgroup>
+        <h1>8Bit.js Generator</h1>
+        <section>
+            <div class="megaman char"></div>
+            <div class="bullets char"></div>
+            <div class="spaceInvader char"></div>
+        <section>
+    </hgroup>
+    
+    <!-- <a href="https://github.com/octopoda/Eight-Big-jQuery" class="fork"><img src="/images/fork.png" alt="fork me on github" /></a> -->
+</header>
+<section class="clearfix">
+    <fieldset class="createForm">
+        <h3>Create your Pixel Grid</h3>
+        
+            <label>Pixels Across</label>
+             <input type="text" name="cols" id="cols" placeholder="20"  />
+        </p>
+        <p>
+            <label>Pixels Down</label>
+             <input type="text" name="rows" id="rows" placeholder="20"  />
+        </p>
+        <p>
+            <button id="gridSubmit" class="submit">Give me my grid</button>
+        </p>
+    </fieldset>
+
+    <article class="clearfix wrapper">
+        <aside>
+           <div class="directions">
+                <h5>Directions</h5>
+                <p>
+                    Change your color and click on the box to set your pixel.  If you make a mistake just click the box again to erase your color.  Once finished click finish and get code to get your object for eightbit.js
+                </p>
+          </div>
+           <div class="currentColor">
+                <h5>Current Settings</h5>
+                <p>
+                    <label>Current Color (hexadecimal)</label>
+                    <input type="text" name="hex" id="hex" placeholder="#000000" value="#000000" class="colorPicker"/>
+                </p>
+                <p>
+                    <label>Character Name:</label>
+                    <input type="text" name="character" id="character" placeholder="Character Name (Link)"  />
+                </p>
+                <p>
+                    <label><input type="checkbox" id="hoverPaint" /> Quick Paint</label>
+                    <label><input type="checkbox" id="hoverErase" /> Quick Erase</label>
+                </p>
+           
+                <p>
+                  <label for="jsCSS">
+                      <input type="radio" name="jsCSS" value="js" />
+                       Eightbit JS Character
+                  </label>
+                  <label>
+                    <input type="radio" name="jsCSS" value="css" />
+                    Pure CSS Character
+                  </label>
+                </p>
+                <button id="finish" class="submit">Finish and get Code</button>
+          </div>
+            
+        </aside>
+        <div class="tableWrapper"></div>
+        
+    </article>
+</section>
+
+
+
+<footer>
+    <!--[if IE]> 
+          <h5>I don't quite have this working in IE yet.  Its in the works though. </h5> 
+        <!endif-->
+    <ul>
+        <li>Made By: Zack Davis - Octopoda<a href="http://octopodamedia.com" >Octopoda</a> </li>
+    </ul>
+</footer>
+
+<div class="mask"></div>
+<div class="dialog">
+    <h5>Your Eight Bit Object</h5>
+    <p>Copy all of the code and transfer it to the add here comment in eightbit.js.  Once you have copied your code you can then call your character from your main page.</p>
+    <h5>Your Code</h5>
+    <div class="code"></div>
+    <button class="close">Close</button>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="creator.eightbit.js"></script>
+<script src="../jquery-minicolors/jquery.minicolors.min.js"></script>
+<script src="../jquery.loaded.eightbit.js"></script>
+<script>
+$(function () {
+    
+  $('.megaman').eightbit({
+        pixel :5,
+        character : 'megaman'  
+     });
+
+    $('.bullets').eightbit({
+        pixel :5,
+        character : 'bullets'  
+     }); 
+
+    $('.spaceInvader').eightbit({
+        pixel :5,
+        character : 'spaceInvader'  
+     });
+
+    $(".colorPicker").miniColors({
+          letterCase: 'uppercase',
+          change: function(hex, rgb) {
+            $('#hex').attr('value', hex);
+          }
+   });
+
+
+});
+</script>
+</body>
+</html>
