@@ -6,6 +6,7 @@
 	margin: 0 .25em;
 	display: inline-block;
 	outline: none;
+	display:none
 }
 
 .miniColors-selector {

@@ -5,8 +5,8 @@ $(function () {
 	var _rows = 22;
 	var _dev = false;
 
-	
-	
+
+
 
 	if (_dev) {
 		$('.tableWrapper').html(buildTable(16, 22));
@@ -29,12 +29,12 @@ $(function () {
 			}
 			$('#finish').show();
 			$('.wrapper').addClass('active');
-			
+
 			$('.createForm, .currentColor, .directions').slideToggle(500);
 			/* */
 
 			initTable('click');
-			
+
 		});
 	}
 
@@ -44,7 +44,7 @@ $(function () {
 		switch (_hover) {
 			case 'click':
 			console.log('click mode');
-			
+
 			$('.tableWrapper table tr td').click(function () {
 				if ($(this).hasClass('active')) {
 					$(this).removeClass('active');
@@ -54,7 +54,7 @@ $(function () {
 					$(this).addClass('active');
 				}
 			});
-			
+
 			$('.tableWrapper table tr td').unbind('mouseover');
 
 			break;
@@ -90,7 +90,7 @@ $(function () {
 		if (_message) {
 			errorPaint($(this), _message);
 		}
-		
+
 		return;
 	});
 
@@ -131,17 +131,24 @@ $(function () {
 
 
 	//Setting the color
-	$('#hex').on('focusout', function () {
+	$(document).on('focusout', '#hex', function() {
 		_currentColor = $(this).attr('value');
+		console.log(_currentColor);
 	});
 
+	// $('#hex').on('focusout', 'input', function () {
+	// 	_currentColor = $(this).attr('value');
+	// 	console.log(_currentColor);
+	// });
+
 	//setting the character
-	$('#character').on('focusout', function () {
+	$(document).on('focusout', '#character', function() {
 		_charName = $(this).val();
 	});
 
+
 	//Hover Paint
-	$('#hoverPaint').on('change', function (e) {
+	$(document).on('change', '#hoverPaint', function(e) {
 		_hover = 'click';
 		if ($(this).is(":checked")) {
 			_hover = 'hover';
@@ -153,8 +160,10 @@ $(function () {
 		initTable(_hover);
 	});
 
+	// $('#hoverPaint').on('change', function (e) {});
+
 	//Hover Erase
-	$('#hoverErase').on('change', function (e) {
+	$(document).on('change', '#hoverErase', function (e) {
 		_hover = 'click';
 
 		if ($(this).is(':checked')) {
@@ -168,14 +177,15 @@ $(function () {
 
 		initTable(_hover);
 	});
+	//$('#hoverErase').on('change', function (e) {});
 
 	//Building the table
 	function buildTable(_c, _r) {
 		_c++;
 		_r++;
-		
 
-		
+
+
 		var _table = '<h5>The Grid</h5><table id="creator" cellspacing=0 cellpadding="0" width="'+_c*20+'px">';
 		for (_i = 1; _i < _r; _i++) {
 			_table += '<tr data-row="'+_i+'">';
@@ -203,11 +213,11 @@ $(function () {
 			top: (($(window).height()/2) - ($('.dialog').height()/2)) + _height,
 			left: ($(window).width()/2) - ($('.dialog').width()/2)
 		});
-       
-		
 
 
-		
+
+
+
 		if (validate($('#character'))) {
 			errorPaint($('#character'), 'This field is required');
 		}
@@ -215,7 +225,7 @@ $(function () {
 		jsCSS = $('input[name="jsCSS"]:checked').val();
 
 		if (jsCSS == 'js') {
-			_code = buildDictionary();	
+			_code = buildDictionary();
 		} else {
 			_code = buildCSS();
 		}
@@ -228,6 +238,8 @@ $(function () {
 		$('.dialog .code').html('');
 	});
 
+	$('miniColors-trigger').hide();
+
 	function buildDictionary() {
 		var _code = 'var '+ _charName + ' = new Object({';
 				_code += 'columns: '+_columns+', ';
@@ -237,7 +249,7 @@ $(function () {
 		return _code;
 	}
 
-	
+
 
 
 	function iterateRows () {
@@ -272,7 +284,7 @@ $(function () {
 			_code += 'width: 4em;';
 			_code += 'height: 4em;';
 			_code += 'box-shadow: '+iterateCSS();
-			
+
 		_code += ';}';
 
 		return _code;
@@ -286,7 +298,7 @@ $(function () {
 			_c = $(this).attr('data-row');
 			for (_i = 0; _i < $(this).children('td').length; _i++) {
 				_this = _tr.children('td[data-col='+_i+']');
-				
+
 				if (_this.hasClass('active')) {
 					_r = _this.attr('data-col');
 					_hex = colorToHex(_this.css('backgroundColor'));
@@ -301,12 +313,12 @@ $(function () {
 		return _code;
 	}
 
-	
+
 	function colorToHex(color) {
 		if (color.substr(0, 1) === '#') {
 			return color;
 		}
-		
+
 		var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
 
 		var red = parseInt(digits[2]);
@@ -316,14 +328,14 @@ $(function () {
 		return '#' + toHex(red)+toHex(green)+toHex(blue);
 	}
 
-	
+
 	function toHex(n) {
 		n = parseInt(n,10);
 		if (isNaN(n)) return "00";
 		n = Math.max(0,Math.min(n,255));
 		return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
 	}
-	
+
 
 });
 
